@@ -5,6 +5,19 @@ import GoogleMap from '../screens/GoogleMap';
 import List from '../screens/List';
 import Task from '../screens/Task';
 import {Icon} from '@rneui/themed';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const HomeStack = createStackNavigator();
+
+const HomeScreens = () => {
+  const sesion = true;
+  return (
+    <HomeStack.Navigator screenOptions={{headerShown:false}}>
+      <HomeStack.Screen name="Home" component={Home} />
+      <HomeStack.Screen name="Tasks" component={Task} />
+    </HomeStack.Navigator>
+  )
+}
 
 const Tab = createMaterialBottomTabNavigator();
 const PRIMARY_COLOR = '#0da9ba';
@@ -14,8 +27,8 @@ export const Tabs = () =>{
     <Tab.Navigator 
         
      barStyle={{backgroundColor: PRIMARY_COLOR}}>
-      <Tab.Screen name="Home" component={Home} options={{
-          tabBarLabel: 'home',
+      <Tab.Screen name="Casa" component={HomeScreens} options={{
+          tabBarLabel: 'Home',
           tabBarIcon: ({ color }) => (
             <Icon 
                 name='home'
@@ -24,7 +37,7 @@ export const Tabs = () =>{
             />
           ),
         }}/>
-      <Tab.Screen name="Task" component={Task} options={{
+      <Tab.Screen name="Task" component={HomeScreens} options={{
           tabBarLabel: 'Task',
           tabBarIcon: ({ color }) => (
             <Icon 

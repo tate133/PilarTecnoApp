@@ -21,18 +21,23 @@ import {
 } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Header from '../components/AppHeader';
-import 'react-native-gesture-handler';
+import { Button } from 'react-native-paper';
+import { useDispatch } from 'react-redux';
+import { appActions } from '../redux/appRedux';
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
 const Login = () => {
-  
+  const dispatch = useDispatch();
+  const setAuth = () => {
+    dispatch(appActions.setUser({name:"Exequiel", lastname:"Ramirez"}));
+  }
 
   return (
       <SafeAreaProvider>
             <View style={styles.viewGrid}>
-                <Text style={styles.textButton}>Login</Text>
+                <Button title="Ingresar" onPress={()=> setAuth()}/>
             </View>
       </SafeAreaProvider>
     

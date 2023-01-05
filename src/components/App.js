@@ -23,9 +23,10 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Header from './AppHeader';
 import 'react-native-gesture-handler';
 import {AppStack} from '../routes/app';
-
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
+import { Provider } from 'react-redux';
+import store from "../redux/store"
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
@@ -34,9 +35,12 @@ const App = () => {
   
 
   return (
+    <Provider store={store}>
       <NavigationContainer>
         <AppStack />
       </NavigationContainer>
+    </Provider>
+      
     
     
   );

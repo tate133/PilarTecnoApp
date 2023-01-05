@@ -22,18 +22,20 @@ import {
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Header from '../components/AppHeader';
 import 'react-native-gesture-handler';
+import { useSelector } from 'react-redux';
+import { appActions, appSelector } from '../redux/appRedux';
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
 const Profile = () => {
-  
+  const user = useSelector(appSelector.user)
 
   return (
       <SafeAreaProvider>
         <Header title='Perfil'/>
         <View style={styles.viewGrid}>
-            <Text style={styles.textButton}>Perfil</Text>
+            <Text style={styles.textButton}>{user.name} {user.lastname}</Text>
         </View>
       </SafeAreaProvider>
     
