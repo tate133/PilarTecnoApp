@@ -3,6 +3,7 @@ import Home from '../screens/Home';
 import Profile from '../screens/Profile';
 import GoogleMap from '../screens/GoogleMap';
 import List from '../screens/List';
+import ListDetail from '../screens/ListDetail';
 import Task from '../screens/Task';
 import {Icon} from '@rneui/themed';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -15,6 +16,18 @@ const HomeScreens = () => {
     <HomeStack.Navigator screenOptions={{headerShown:false}}>
       <HomeStack.Screen name="Home" component={Home} />
       <HomeStack.Screen name="Tasks" component={Task} />
+    </HomeStack.Navigator>
+  )
+}
+
+const ListStack = createStackNavigator();
+
+const ListScreens = () => {
+  const sesion = true;
+  return (
+    <HomeStack.Navigator screenOptions={{headerShown:false}}>
+      <HomeStack.Screen name="List" component={List} />
+      <HomeStack.Screen name="Detail" component={ListDetail} />
     </HomeStack.Navigator>
   )
 }
@@ -55,7 +68,7 @@ export const Tabs = () =>{
                 color='#03535c'
             />
           ),}}/>
-      <Tab.Screen name="List" component={List} options={{
+      <Tab.Screen name="Listas" component={ListScreens} options={{
           tabBarLabel: 'List',
           tabBarIcon: ({ color }) => (
             <Icon 
